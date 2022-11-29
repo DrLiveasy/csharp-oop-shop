@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -96,7 +97,12 @@ namespace CSharpShop
         {
             return prezzo;
         }
+        public string NomeEsteso()
+        {
+            var concatenato = Codice + nome;
 
+            return concatenato;
+        }
         public void StampaDatiProdotto()
         {
             Console.WriteLine("-----------------------");
@@ -105,6 +111,7 @@ namespace CSharpShop
             Console.WriteLine("Descrezione Prodotto :" + descrizione);
             Console.WriteLine("Prezzo senza iva :" + prezzo + " €");
             Console.WriteLine("Prezzo compreso iva :" + PrezzoCompresoIva() + " €");
+            Console.WriteLine("il nome esteso è :" + NomeEsteso());
             Console.WriteLine("-----------------------");
         }
 
