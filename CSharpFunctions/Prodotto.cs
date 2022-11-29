@@ -13,7 +13,7 @@ namespace CSharpShop
         public string nome;
         public string descrizione;
         public int prezzo;
-        private int iva = 22;
+        private float iva = 0.22f;
 
         public Prodotto( string nome, string descrizione, int prezzo)
         {
@@ -33,7 +33,7 @@ namespace CSharpShop
             return this.Codice;
         }
 
-        public int GetIva()
+        public double GetIva()
         {
             return this.iva;
         }
@@ -87,31 +87,45 @@ namespace CSharpShop
 
 
 
-        public int PrezzoCompresoIva()
+        public double CalcoloIva()
         {
-            int PIva = prezzo * (iva / 100);
-            int PrezzoFinale = PIva + prezzo;
+            double PIva = prezzo * iva;
+
+            double PrezzoFinale = prezzo + PIva;
+
+            PrezzoFinale = (double)System.Math.Round(PrezzoFinale, 2);
 
             return PrezzoFinale;
         }
+        
+
+
         public int PrezzoBase()
         {
             return prezzo;
         }
+
+
         public string NomeEsteso()
         {
             var concatenato = Codice + nome;
 
             return concatenato;
         }
+
+
+
+
         public void StampaDatiProdotto()
         {
+            double PrezzoFinale = CalcoloIva();
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("-----------------------");
             Console.WriteLine("il Codice del prodotto è :" + Codice);
             Console.WriteLine("il Nome :" + nome);
             Console.WriteLine("Descrezione Prodotto :" + descrizione);
-            Console.WriteLine("Prezzo senza iva :" + prezzo + " €");
-            Console.WriteLine("Prezzo compreso iva :" + PrezzoCompresoIva() + " €");
+            Console.WriteLine("il prezzo senza iva è di :" + prezzo + " €");
+            Console.WriteLine($"Prezzo compreso iva è di:{PrezzoFinale} €");
             Console.WriteLine("il nome esteso è :" + NomeEsteso());
             Console.WriteLine("-----------------------");
         }
