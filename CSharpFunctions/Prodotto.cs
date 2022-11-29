@@ -92,6 +92,10 @@ namespace CSharpShop
 
             return PrezzoFinale;
         }
+        public int PrezzoBase()
+        {
+            return prezzo;
+        }
 
         public void StampaDatiProdotto()
         {
