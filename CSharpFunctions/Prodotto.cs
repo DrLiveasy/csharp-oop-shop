@@ -15,15 +15,16 @@ namespace CSharpShop
         public int prezzo;
         private int iva = 22;
 
-        public Prodotto(int codice, string nome, string descrizione, int prezzo)
+        public Prodotto( string nome, string descrizione, int prezzo)
         {
             Random rnd = new Random();
-            codice = rnd.Next(1,100);
-            this.Codice = codice;
+            this.Codice = rnd.Next(1, 100);
             this.nome = nome;
             this.descrizione = descrizione;
             this.prezzo = prezzo;
         }
+
+
      
         //Getters 
 
